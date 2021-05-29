@@ -1,0 +1,122 @@
+.form {
+  background-color: var(--todo-background);
+  &--new-todo {
+    border-radius: px-to-rem(5px);
+    margin-bottom: px-to-rem(16px);
+
+    @include apply-box-shadow();
+    @include desktop() {
+      margin-bottom: px-to-rem(24px);
+    }
+  }
+
+  &--todo-list {
+    border-radius: px-to-rem(5px);
+  }
+  &__field {
+    padding: px-to-rem(16px) px-to-rem(20px);
+    display: flex;
+    align-items: center;
+    &:not(&--no-border-bottom) {
+      border-bottom: 1px solid var(--border);
+      // border-bottom: px-to-rem(20px) px-to-rem(24px);
+    }
+    @include desktop() {
+      padding: px-to-rem(20px) px-to-rem(24px);
+    }
+  }
+  &__checkbox {
+    display: none;
+  }
+
+  &__checkbox-label {
+    --background: var(--border);
+    --size: #{px-to-rem(20px)};
+
+    width: var(--size);
+    height: var(--size);
+    display: block;
+    border-radius: 50%;
+    margin-right: px-to-rem(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--background);
+
+    &::before {
+      --width: calc(100% - 4px);
+      --height: calc(100% - 4px);
+      --background-before: var(--todo-background);
+
+      content: "";
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      width: var(--width);
+      height: var(--height);
+      background: var(--background-before);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include desktop() {
+      --size: #{px-to-rem(24px)};
+      margin-right: px-to-rem(24px);
+    }
+  }
+  &__checkbox:checked + &__checkbox-label {
+    --background: linear-gradient(
+      -45deg,
+      var(--initial-gradient),
+      var(--last-gradient)
+    );
+  }
+
+  @include from($desktop) {
+    &__checkbox:hover + &__checkbox-label {
+      --background: linear-gradient(
+        -45deg,
+        var(--initial-gradient),
+        var(--last-gradient)
+      );
+
+      cursor: pointer;
+    }
+  }
+  &__checkbox:checked + &__checkbox-label {
+    &::before {
+      --background-before: url(../images/icon-check.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: px-to-rem(7px);
+    }
+  }
+  &__input {
+    background: none;
+    border: none;
+    font-size: px-to-rem(12px);
+    color: var(--on-todo-background);
+    flex-grow: 1;
+
+    @include desktop() {
+      font-size: px-to-rem(18px);
+    }
+
+    &::placeholder {
+      color: var(--on-todo-background);
+    }
+  }
+
+  &__cross {
+    height: px-to-rem(12px);
+
+    @include desktop() {
+      height: px-to-rem(18px);
+      cursor: pointer;
+    }
+  }
+}

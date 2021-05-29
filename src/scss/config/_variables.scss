@@ -1,0 +1,33 @@
+:root {
+  --background: #171823;
+  --border: #393a4b;
+  --todo-background: #25273d;
+  --uncompleted-todo: #c8cbe7;
+  --completed-todo: #4d5067;
+  --on-background: #5b5e7e;
+  --on-todo-background: #767992;
+  --on-panel-background: #5b5e7e;
+  --active-filter-option: #3a7cfd;
+  --delete-todo: #494c6b;
+  --box-shadow-color: rgba(0, 0, 0, 0.5);
+  --initial-gradient: #5dd2fe;
+  --last-gradient: #c058f3;
+  --hover-filter-option: #e3e4f1;
+}
+
+body.light-theme {
+  --background: #fafafa;
+  --border: #979797;
+  --todo-background: #ffffff;
+  --uncompleted-todo: #494c6b;
+  --completed-todo: #d1d2da;
+  --on-background: #9495a5;
+  --panel-background: #9495a5;
+  --on-panel-background: #9495a5;
+  --delete-todo: #494c6b;
+  --box-shadow-color: rgba(194, 195, 214, 0.5);
+}
+
+$main-font: "Josefin Sans", sans-serif;
+$base-font-size: 16px;
+$desktop: 1024px;

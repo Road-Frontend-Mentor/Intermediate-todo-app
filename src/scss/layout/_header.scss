@@ -1,0 +1,14 @@
+.main-header {
+  height: 200px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 48px 24px 0;
+  background-image: url(../images/bg-mobile-dark.jpg);
+  background-size: cover;
+
+  @include from($desktop) {
+    height: px-to-rem(300px);
+    justify-content: center;
+  }
+}

@@ -1,0 +1,14 @@
+.filter-list {
+  @include to-desktop() {
+    @include apply-box-shadow();
+    background-color: var(--todo-background);
+    padding: px-to-rem(15px);
+    border-radius: px-to-rem(5px);
+  }
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  &__item:not(:last-child) {
+    margin-right: px-to-rem(22px);
+  }
+}

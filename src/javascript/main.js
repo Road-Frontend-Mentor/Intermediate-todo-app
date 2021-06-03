@@ -4,6 +4,23 @@ function main() {
   const newTodoFormDOMEl = document.getElementById("new-todo-form");
   const addNewTodoInputDOMEl = document.getElementById("add-new-todo");
   const newTodoCheckboxDOMEL = document.getElementById("add-new-todo-checkbox");
+  const LOCAL_STORAGE_KEY = "todo-list";
+
+  //LocalStorage function
+  function saveTodoListLocalStorage(value, key = LOCAL_STORAGE_KEY) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+  function getFromLocalStorage(key = LOCAL_STORAGE_KEY) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+
+  const composeHtmlNode =
+    (...htmlNode) =>
+    (initialNode) =>
+      htmlNode.reduce((prevHtmlNode, currentNode) => {
+        prevHtmlNode.appendChild(currentNode);
+        return prevHtmlNode;
+      }, initialNode);
 
   function createFieldDOMEl() {
     const field = document.createElement("div");
@@ -140,7 +157,6 @@ function main() {
     function getList() {
       return list;
     }
-
     return {
       addItem,
       deleteItem,
@@ -149,10 +165,6 @@ function main() {
       getList,
     };
   }
-
-  //LocalStorage function
-  function saveTodoListLocalStorage(todoList, todoListKey) {}
-  function getFromLocalStorage() {}
 
   function handleTodoListClick(e, list) {
     if (e.target.classList.contains("form__cross")) {
@@ -185,6 +197,12 @@ function main() {
     id: 3,
   });
 
+  todoList.addItem({
+    text: "Lear Svelte.js",
+    checked: false,
+    id: 4,
+  });
+
   todoList.drawList();
 
   //Eventos de escucha
@@ -195,4 +213,5 @@ function main() {
     handleTodoFormClick(e, todoList)
   );
 }
+
 main();
